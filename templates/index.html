@@ -7,20 +7,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
     crossorigin="anonymous">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typed.js"></script>
+
+  <style>
+      html,body {
+  font-family: 'Raleway', sans-serif;
+  padding: 1em;
+  font-size: 18px;
+  background: #222;
+  color: #aaa
+}
+
+h1,h2 {
+  font-weight: 200;
+  margin: 0.4em 0;
+}
+h1 { font-size: 3.5em; }
+h2 {
+  color: #888;
+  font-size: 2em;
+}
+  </style>
 
   <title>Text-Utility</title>
 </head>
 
 <body>
   <br/>
-  <h1 style="text-align: center">Text Utility</h1>
+  <div class="typewriter">
+     <h1 style="text-align: center">Text Utility</h1>
+  </div>
+
 
   <h2 style="text-align: center">Welcome!!!</h2>
-  <p style="text-align: center">Here you can convert your text to various cases. Just enter your text below, and select option from dropdown list. Easy
-    Peasy!!
-  </p>
+{#  <p style="text-align: center">Here you can convert your text to various cases. Just enter your text below, and select option from dropdown list. Easy#}
+{#    Peasy!!#}
+{#  </p>#}
+  <div>
+     <h3 style="text-align: center"><span id="typed"></span></h3>
+  </div>
+
   <br/>
   <form method="POST" class="container">
     <div class="input-group">
@@ -40,16 +69,27 @@
       </div>
     </div>
 
-    <!-- <div>
-      <button formaction="/capitalize" type="submit" class="btn btn-primary" style="align-self: center">Capitalize</button>
-    </div> -->
   </form>
 
   <br/>
   <h1 style="text-align: center">Converted Text -</h1>
   <h2 style="text-align: center">{{converted_text}}</h2>
 
+  <div id="typed-strings">
+  </div>
 
+  <script>
+     var typed = new Typed('#typed',{
+                    strings:["You can do anything with your text here!","Convert it to capital case","or lower case","or camel case","or you can even remove punctuations", "Enter text below to see the magic!"],
+                    backSpeed: 15,
+                    smartBackspace: true,
+                    backDelay: 1200,
+                    startDelay: 1000,
+                    typeSpeed: 25,
+                    loop: false,
+
+                  });
+    </script>
 
 
   <!-- Optional JavaScript -->
@@ -60,6 +100,11 @@
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
+
+
+
+
+
 </body>
 
 </html>
