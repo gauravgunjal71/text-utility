@@ -1,2 +1,2 @@
-# text-utility
+# Text Utility
 Text Utility in Flask
