@@ -9,31 +9,31 @@ def home():
 @app.route('/capitalize', methods=['POST'])
 def capitalize():
     text = str(request.form['text'])
-    text = text.upper()
-    return render_template('index.html', text=text)
+    converted_text = text.upper()
+    return render_template('index.html', text=text, converted_text=converted_text)
 
 @app.route('/lower', methods=['POST'])
 def lower():
     text = str(request.form['text'])
-    text = text.lower()
-    return render_template('index.html', text=text)
+    converted_text = text.lower()
+    return render_template('index.html', text=text, converted_text=converted_text)
 
 @app.route('/removepunc', methods=['POST'])
 def removepunc():
     punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
     text = str(request.form['text'])
-    no_punct = ""
+    converted_text = ""
     for char in text:
         if char not in punctuations:
-            no_punct = no_punct + char
-    return render_template('index.html', text=no_punct)
+            converted_text = converted_text + char
+    return render_template('index.html', text=text, converted_text=converted_text)
 
 @app.route('/camelcase', methods=['POST'])
 def camelcase():
     text = str(request.form['text'])
-    text = ''.join(a.capitalize() for a in split('([^a-zA-Z0-9])', text)
+    converted_text = ''.join(a.capitalize() for a in split('([^a-zA-Z0-9])', text)
        if a.isalnum())
-    return render_template('index.html', text=text)
+    return render_template('index.html', text=text, converted_text=converted_text)
 
 
 app.run(port=4996)
