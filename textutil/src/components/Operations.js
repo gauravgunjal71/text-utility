@@ -1,12 +1,12 @@
 import React from 'react';
 import { InputGroup, FormControl, Dropdown } from 'react-bootstrap'
-import Typing from 'react-typing-animation';
+
 
 class Operations extends React.Component {
 
     state = {
         text: null,
-        converted_text: null
+        converted_text: null,
 
     }
 
@@ -15,7 +15,8 @@ class Operations extends React.Component {
         // this.capitalize = this.capitalize.bind(this);
         this.state = {
             text: '',
-            converted_text: ''
+            converted_text: '',
+            show: false
         }
     }
 
@@ -30,6 +31,7 @@ class Operations extends React.Component {
             body: JSON.stringify({ "text": this.state.text })
         }).then(response => response.json()).then(data => {
             this.setState({ converted_text: data.converted_text })
+            this.setState({ show: true })
 
         })
 
@@ -46,6 +48,7 @@ class Operations extends React.Component {
             body: JSON.stringify({ "text": this.state.text })
         }).then(response => response.json()).then(data => {
             this.setState({ converted_text: data.converted_text })
+            this.setState({ show: true })
 
         })
 
@@ -62,6 +65,7 @@ class Operations extends React.Component {
             body: JSON.stringify({ "text": this.state.text })
         }).then(response => response.json()).then(data => {
             this.setState({ converted_text: data.converted_text })
+            this.setState({ show: true })
 
         })
 
@@ -78,10 +82,13 @@ class Operations extends React.Component {
             body: JSON.stringify({ "text": this.state.text })
         }).then(response => response.json()).then(data => {
             this.setState({ converted_text: data.converted_text })
+            this.setState({ show: true })
 
         })
 
     }
+
+    
 
     h1style = {
         textAlign: 'center'
@@ -90,25 +97,9 @@ class Operations extends React.Component {
         return (
             <div>
                 <br />
-                <h1 style={this.h1style}>Text Utility</h1>
-                <br />
-
-                <div>
-                    <Typing>
-                        <Typing.Speed ms={20} />
-                        <h2 style={this.h1style}><span>Welcome to Text Utility service.</span></h2>
-                        <Typing.Delay ms={1000} />
-                        <Typing.Backspace count={32} />
-                        <h2 style={this.h1style}><span>Here you can do anything with your text.</span></h2>
-                        <Typing.Delay ms={1000} />
-                        <Typing.Backspace count={40} />
-                        <h2 style={this.h1style}><span>Enter the text below to see the magic!!!</span></h2>
-                    </Typing>
-                </div>
-
-                <br />
 
                 <div className='container'>
+
                     <InputGroup className="mb-3">
                         <FormControl
                             aria-label="Default"
@@ -116,7 +107,9 @@ class Operations extends React.Component {
                             placeholder="Enter your text here"
                             name="text"
                             value={this.state.text}
-                            onChange={(e) => { this.setState({ text: e.target.value }) }}
+                            onChange={(e) => {
+                                this.setState({ text: e.target.value });
+                            }}
                         />
                         <Dropdown>
                             <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -132,10 +125,15 @@ class Operations extends React.Component {
                         </Dropdown>
                     </InputGroup>
 
-                    <div>
-                        <h1 style={this.h1style}>Converted Text -</h1>
-                        <h2 style={this.h1style}>{this.state.converted_text}</h2>
-                    </div>
+                    {
+                        this.state.show ?
+                            <div>
+                                <h1 style={this.h1style}>Converted Text -</h1>
+                                <h2 style={this.h1style}>{this.state.converted_text}</h2>
+                            </div>
+                            : null
+                    }
+
 
 
                 </div>

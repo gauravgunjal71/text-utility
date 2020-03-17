@@ -1,10 +1,15 @@
 import React from 'react';
 import './App.css';
 import Operations from './components/Operations'
+import Headers from './components/Headers'
 
 function App() {
   return (
-    <Operations></Operations>
+    <div>
+      <Headers></Headers>
+      <Operations></Operations>
+    </div>
+    
   );
 }
 
